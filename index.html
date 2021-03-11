@@ -4,11 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD Firebase</title>
 </head>
 
 <body>
+    Name <input type="NameTbox" type="text" id="NameTbox" oninput="Update(this.value, 'name')"><br> <br>
+    Roll No <input type="RollTbox" type="text" id="RollTbox" oninput="Update(this.value, 'roll')"><br> <br>
+    Section <input type="SecTbox" type="text" id="SecTbox" oninput="Update(this.value, 'sec')"><br> <br>
+    Gender <input type="GenTbox" type="text" id="GenTbox" oninput="Update(this.value, 'gen')"><br> <br>
+    <hr>
+    <br> <br>
+    <button id="insertBtn">INSERT</button>
+    <button id="selectBtn">SELECT</button>
+    <button id="updateBtn">UPDATE</button>
+    <button id="deleteBtn">DELETE</button>
 
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
