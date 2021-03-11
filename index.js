@@ -35,9 +35,15 @@ document.getElementById("insertBtn").onclick = function () {
   console.log("hello");
   Add_Doc_CustomID();
 };
-document.getElementById("selectBtn").onclick = function () {};
-document.getElementById("updateBtn").onclick = function () {};
-document.getElementById("deleteBtn").onclick = function () {};
+document.getElementById("selectBtn").onclick = function () {
+  RetrieveData_inDocument();
+};
+document.getElementById("updateBtn").onclick = function () {
+  Update_Fields_inDocument();
+};
+document.getElementById("deleteBtn").onclick = function () {
+  DeleteDocument();
+};
 // -----------------------Writing Data -----------------------------
 
 //---Add Document with Auto Generated ID
@@ -79,4 +85,60 @@ function Add_Doc_CustomID() {
       console.eroor("Error adding document", error);
     });
 }
-console.log("hiiii");
+// -----------------------Updating Data -----------------------------
+
+// ---Add Document with Auto Generated ID
+function Update_Fields_inDocument() {
+  cloudDB
+    .collection("Students")
+    .doc(rollV)
+    .update({
+      //   This is creating a new entry in the DB
+      NameOfStd: nameV,
+      Section: secV,
+      Gender: genV,
+    })
+    .then(function () {
+      console.log("Document updated with ID", rollV);
+    })
+    .catch(function (error) {
+      console.eroor("Error Updated document", error);
+    });
+}
+// -----------------------Delete Data -----------------------------
+
+// ---Add Document with Auto Generated ID
+function DeleteDocument() {
+  cloudDB
+    .collection("Students")
+    .doc(rollV)
+    .delete()
+    .then(function () {
+      console.log("Document deleted with ID", rollV);
+    })
+    .catch(function (error) {
+      console.eroor("Error deleting document", error);
+    });
+}
+// -----------------------Get Data -----------------------------
+
+// ---Add Document with Auto Generated ID
+function RetrieveData_inDocument() {
+  cloudDB
+    .collection("Students")
+    .doc(rollV)
+    .get()
+    .then(function (doc) {
+      if (doc.exists) {
+        NameT.value = doc.data().NameOfStd;
+        SecT.value = doc.data().Section;
+        GenT.value = doc.data().Gender;
+        console.log(doc.data().Gender);
+      } else {
+        console.log("Doc Does not exist");
+      }
+    })
+    .catch(function (error) {
+      console.eroor("Error deleting document", error);
+    });
+}
