@@ -9,6 +9,7 @@ let nameV = NameT.value;
 let rollV = RollT.value;
 let secV = SecT.value;
 let genV = GenT.value;
+
 function Update(val, type) {
   if (type == "name") nameV = val;
   else if (type == "roll") rollV = val;
